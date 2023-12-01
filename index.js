@@ -20,7 +20,6 @@ app.get('/line/webhook', (req, res) => {
 
 app.post('/line/webhook', async (req, res) => {
     try {
-        let messages;
 
         const userText = req.body.events[0].message.text
         const { groupId, userId } = req.body.events[0].source
@@ -57,7 +56,7 @@ app.post('/line/webhook', async (req, res) => {
     }
 })
 
-const port = 3000
-app.listen(3000, () => {
-    console.log(`App is running at http://localhost:${port}`)
+const port = process.env.PORT
+app.listen(port, () => {
+    console.log(`App is running...`)
 })
